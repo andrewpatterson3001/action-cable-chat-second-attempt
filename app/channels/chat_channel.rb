@@ -4,11 +4,20 @@ class ChatChannel < ApplicationCable::Channel
     stream_from "chat_channel"
   end
 
-  def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
+  def speak(data)
+    Message.create!(content: data['message'])
+
+    p '*'*100
+    p data
+    ActionCable.server.broadcast('chat_channel', message: render_message(data['message']))
+    p '*'*100
   end
 
-  def speak(data)
-    ActionCable.server.broadcast 'chat_channel', message: data['message']
+  private
+
+  def render_message(my_message)
+    p '~*~'* 100
+    p my_message
+    ApplicationController.render(partial: 'messages/message', locals: {message: my_message})
   end
 end

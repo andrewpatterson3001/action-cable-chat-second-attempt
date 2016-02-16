@@ -6,10 +6,10 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    alert data['message']
+    $('#messages').last().after(data.message)
 
-  speak: (message) ->
-    @perform 'speak', message: message
+  speak: (mesg) ->
+    @perform 'speak', message: mesg
 
 $(document).on 'keypress', '[data-behavior~=chat_speaker]', (event) ->
   if event.keyCode is 13
