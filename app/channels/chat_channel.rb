@@ -5,19 +5,19 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    Message.create!(content: data['message'])
-
-    p '*'*100
+    p current_user
+    Message.create!(content: data['message'], user_id: current_user['id'])
     p data
-    ActionCable.server.broadcast('chat_channel', message: render_message(data['message']))
-    p '*'*100
+    p current_user
+    ActionCable.server.broadcast('chat_channel', message: render_message(data['message'], current_user))
   end
 
   private
 
-  def render_message(my_message)
+  def render_message(my_message, user_info)
     p '~*~'* 100
     p my_message
-    ApplicationController.render(partial: 'messages/message', locals: {message: my_message})
+    p user_info['email']
+    ApplicationController.render(partial: 'messages/message', locals: {message: my_message, username: user_info['email']})
   end
 end
