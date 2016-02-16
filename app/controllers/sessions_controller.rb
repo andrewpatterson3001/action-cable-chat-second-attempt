@@ -11,8 +11,7 @@ class SessionsController < ApplicationController
       # logged in when they navigate around our website.
       session[:user_id] = user.id
       cookies.signed[:username] = user
-      p cookies
-      redirect_to '/'
+      redirect_to '/chats'
     else
     # If user's login doesn't work, send them back to the login form.
       redirect_to '/login'

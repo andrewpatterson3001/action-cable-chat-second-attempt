@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.id
       cookies.signed[:username] = user
-      redirect_to '/'
+      redirect_to '/chats'
     else
       redirect_to '/signup'
     end

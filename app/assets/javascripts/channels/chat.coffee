@@ -6,7 +6,7 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    $('#messages').last().after(data.message)
+    $('#messages').first().after(data.message)
 
   speak: (mesg) ->
     @perform 'speak', message: mesg
