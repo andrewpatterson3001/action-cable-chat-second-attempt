@@ -30,7 +30,6 @@ var MessageList = React.createClass({
       authorHash[eachAuthor.id] = eachAuthor.email
       return authorHash
     })
-    console.log(allAuthors);
     var messageNodes = this.props.messages.map(function(eachMessage) {
       return (
         // this.props.users[messageAuthor]
