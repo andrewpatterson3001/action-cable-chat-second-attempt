@@ -83,4 +83,13 @@ Rails.application.configure do
   #set the cable URL for our production environment
   config.web_socket_server_url = "wss://morning-meadow-41075.herokuapp.com/cable"
 
+
+  config.react.server_renderer_pool_size  ||= 1  # ExecJS doesn't allow more than one on MRI
+  config.react.server_renderer_timeout    ||= 20 # seconds
+  config.react.server_renderer = React::ServerRendering::SprocketsRenderer
+  config.react.server_renderer_options = {
+    files: ["components.js"], # files to load for prerendering
+    replay_console: true,                 # if true, console.* will be replayed client-side
+  }
+
 end
