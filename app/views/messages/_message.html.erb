@@ -1,3 +1,4 @@
+<!-- The react_component renders the message -->
 <div class="message">
-  <p><b><%= username %></b>: <%= message%></p>
+  <%= react_component('Message', props={author: username, content: message}, {prerender:true}) %>
 </div>
