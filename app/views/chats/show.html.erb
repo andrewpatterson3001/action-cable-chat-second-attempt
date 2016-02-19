@@ -5,11 +5,16 @@
   <input type="text" data-behavior="chat_speaker">
 </form>
 
+<div id="messages">
+</div>
 
-<div id="messages"></div>
+<div id="earlierreactmessages">
+  <%= react_component('MessageBox', props={messages:@messages, users:@users}) %>
+</div>
 
-<div id="earliermessages">
+<!-- This is what I had before to render the messages stored in the database -->
+<!-- <div id="earliermessages">
   <% @messages.reverse.each do |message| %>
       <b><%= message.user['email'] %></b>: <%= message.content %> <br><br>
   <% end %>
-</div>
+</div> -->
