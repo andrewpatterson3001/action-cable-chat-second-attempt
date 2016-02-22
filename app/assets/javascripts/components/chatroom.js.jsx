@@ -33,11 +33,11 @@ var MessageList = React.createClass({
     var messageNodes = this.props.messages.map(function(eachMessage) {
       return (
         // this.props.users[messageAuthor]
-        <Message author={allAuthors[eachMessage.user_id - 1][eachMessage.user_id]} content={eachMessage.content} key={eachMessage.id} />
+        <li className="list-group-item"><Message author={allAuthors[eachMessage.user_id - 1][eachMessage.user_id]} content={eachMessage.content} key={eachMessage.id} /></li>
         );
     });
     return (
-      <div className="messageList">
+      <div className="messageList list-group">
         {messageNodes.reverse()}
       </div>
     );
