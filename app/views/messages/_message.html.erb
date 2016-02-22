@@ -1,4 +1,4 @@
 <!-- The react_component renders the message -->
-<div class="message">
-  <%= react_component('Message', props={author: username, content: message},{prerender:true}) %>
+<div class="message list-group">
+  <li class="list-group-item"><%= react_component('Message', props={author: username, content: message},{prerender:true}) %></li>
 </div>

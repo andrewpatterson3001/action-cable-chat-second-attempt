@@ -1,5 +1,11 @@
-<h1>Welcome! Come on in and chat.</h1>
+<div class="jumbotron">
+  <h1>Let's Chat!</h1>
+  <p>This chatroom is for discussing ActionCable, React, and Bootstrap!</p>
+  <p><a href="/chats">Go to Chat Room Now!</a></p>
+</div>
 
-<%= react_component('Message', props={author: 'Andrew Patterson', content: 'Thanks for visiting!'}) %>
-
-<h1><a href="/chats">Go to Chat Room Now!</a></h1>
+<ul class="list-group">
+  <li class="list-group-item list-group-item-info">
+    <%= react_component('Message', props={author: 'Andrew Patterson', content: 'Thanks for visiting!'}) %>
+  </li>
+</ul>
